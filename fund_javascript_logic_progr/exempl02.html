@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon" />
+    <title>Aula2js</title>
+    <style>
+      @charset "UTF-8";
+
+      :root {
+        --fundo-claro: #fff;
+        --fundo-escuro: #000;
+        --botao-primario: #7d1ad4;
+        --bota-primario-hover: #6e17b9;
+        --texto-claro: #000;
+        --texto-escuro: #fff;
+      }
+
+[data-theme="dark"] {
+--fundo-claro: #000;
+--fundo-escuro: #fff;
+--texto-claro: #fff;
+--texto-escuro: #000;
+
+}
+
+
+
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--fundo-claro);
+        color: var(--texto-claro);
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        background-color: var(--fundo-claro);
+        color: var(--texto-claro);
+        padding: 2rem;
+        border-radius: 0.9rem;
+      }
+
+      button {
+        background-color: var(--botao-primario);
+        color: var(--texto-escuro);
+        padding: 0.4rem;
+        border: none;
+        border-radius: 5rem;
+        width: 8em;
+        height: 8em;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: var(--bota-primario-hover);
+        transition: 0.8s;
+      };
+
+       svg {
+        color: var(--texto-claro);
+        width: 16em;
+        height: 16em;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Site Modo Escuro</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+        praesentium aspernatur vitae vel? Quidem, laudantium dolor placeat culpa
+        repellendus pariatur exercitationem eos nostrum perferendis. Culpa
+        consectetur dolorem explicabo impedit temporibus!
+      </p>
+      <button id="btn-dark-mode"></button>
+    </div>
+  </body>
+  <script>
+    const btnDarkMode = document.getElementById('btn-dark-mode');
+
+    const themeSystem = localStorage.getItem('themeSystem') || 'light';
+
+    btnDarkMode.addEventListener('click', () => {
+      let oldTheme = localStorage.getItem('themeSystem') || 'light';
+
+      let newTheme = oldTheme === "light" ? "dark" : "light";
+
+      localStorage.setItem('themeSystem', newTheme);
+
+
+      defineCurrentTheme(newTheme);
+    });
+
+    function defineCurrentTheme(theme) {
+
+      const darkSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+        fill="currentColor" class="w-6 h-6"><path d="M12 3v1m8.793 9.793-1.414 1.414m-7.07 
+        0 7.07 7.071m1.414-1.414L21 21v-1m-4.243-8.485-1.414-1.414M12 21v-1m-8.793-9.793L5 
+        5.05M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4Z"/></svg>`;
+
+      const lightSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+        fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M9.5 12a2.5 2.5 
+        0 1 1 5 0 2.5 2.5 0 0 1-5 0ZM12 1a7 7 0 1 0 0 14A7 7 0 0 0 12 1ZM2 12C2 6.477 6.477 
+        2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z" clip-rule="evenodd" /></svg>`;
+
+      document.documentElement.setAttribute("data-theme", theme);
+
+      if (theme === "light") {
+        btnDarkMode.innerHTML = darkSvg;
+        return;
+
+      }
+
+      btnDarkMode.innerHTML = lightSvg;
+    }
+    
+    defineCurrentTheme(newTheme);
+
+  </script>
+</html>
