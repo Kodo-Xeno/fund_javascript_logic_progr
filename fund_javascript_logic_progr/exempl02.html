@@ -17,16 +17,12 @@
         --texto-escuro: #fff;
       }
 
-[data-theme="dark"] {
---fundo-claro: #000;
---fundo-escuro: #fff;
---texto-claro: #fff;
---texto-escuro: #000;
-
-}
-
-
-
+      [data-theme="dark"] {
+        --fundo-claro: #000;
+        --fundo-escuro: #fff;
+        --texto-claro: #fff;
+        --texto-escuro: #000;
+      }
 
       * {
         margin: 0;
@@ -47,10 +43,10 @@
         flex-direction: column;
         gap: 2rem;
         align-items: center;
-        background-color: var(--fundo-claro);
-        color: var(--texto-claro);
+        background-color: var(--fundo-escuro);
+        color: var(--texto-escuro);
         padding: 2rem;
-        border-radius: 0.9rem;
+        border-radius: 2rem;
       }
 
       button {
@@ -66,12 +62,18 @@
       button:hover {
         background-color: var(--bota-primario-hover);
         transition: 0.8s;
-      };
+      }
 
-       svg {
+      svg {
         color: var(--texto-claro);
-        width: 16em;
-        height: 16em;}
+        width: 5rem;
+        height: 5rem;
+      }
+      #Imagem{
+        height: 40vh;
+        width: 35vw;
+        
+      }
     </style>
   </head>
   <body>
@@ -84,26 +86,30 @@
         consectetur dolorem explicabo impedit temporibus!
       </p>
       <button id="btn-dark-mode"></button>
+      <img
+        src="/assets/Spawn.png"
+        alt="A capa do primeiro volume de Spawn, um anti-herói"
+        id="Imagem"
+      />
     </div>
   </body>
   <script>
-    const btnDarkMode = document.getElementById('btn-dark-mode');
+    const btnDarkMode = document.getElementById("btn-dark-mode");
 
-    const themeSystem = localStorage.getItem('themeSystem') || 'light';
+    const themeSystem = localStorage.getItem("themeSystem") || "light";
+    
 
-    btnDarkMode.addEventListener('click', () => {
-      let oldTheme = localStorage.getItem('themeSystem') || 'light';
+    btnDarkMode.addEventListener("click", () => {
+      let oldTheme = localStorage.getItem("themeSystem") || "light";
 
       let newTheme = oldTheme === "light" ? "dark" : "light";
 
-      localStorage.setItem('themeSystem', newTheme);
-
+      localStorage.setItem("themeSystem", newTheme);
 
       defineCurrentTheme(newTheme);
     });
 
     function defineCurrentTheme(theme) {
-
       const darkSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
         fill="currentColor" class="w-6 h-6"><path d="M12 3v1m8.793 9.793-1.414 1.414m-7.07 
         0 7.07 7.071m1.414-1.414L21 21v-1m-4.243-8.485-1.414-1.414M12 21v-1m-8.793-9.793L5 
@@ -118,14 +124,13 @@
 
       if (theme === "light") {
         btnDarkMode.innerHTML = darkSvg;
+        
         return;
-
       }
-
+// De preferência, fazer no "if theme==="light"...", retornar a imagem dentro do darkSVG para demonstrar
       btnDarkMode.innerHTML = lightSvg;
     }
-    
-    defineCurrentTheme(newTheme);
 
+    defineCurrentTheme(newTheme);
   </script>
 </html>
