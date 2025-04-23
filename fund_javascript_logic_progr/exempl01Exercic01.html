@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon" />
+    <title>Aula 1 JS</title>
+  </head>
+  <body>
+    <h1>Quebrando a Maldição</h1>
+    <p>Criando meu primeiro Java Script</p>
+    <p id="resultado"></p>
+    <script>
+      window.alert("Bem-vindo ao site!💥")
+
+      let numHum = prompt("Digite um numero: ");
+
+      let numDois = prompt("Digite dois numeros: ");
+
+      let numeroHum = Number(numHum);
+
+      let numeroDois = Number(numDois);
+
+      let result = numeroHum + numeroDois;
+      
+      document.getElementById('resultado').innerHTML = `o resultado da soma é: ${result}`;
+    </script>
+  </body>
+</html>
