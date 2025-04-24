@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="tela"></div>
+    <table>
+      <tr>
+        <td><button onclick= "clean()">C</button></td>
+        <td><button onclick="back()"><</button></td>
+        <td><button onclick="insert('/')">/</button></td>
+        <td><button onclick="insert('*')">X</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="insert('7')">7</button></td>
+        <td><button onclick="insert('8')">8</button></td>
+        <td><button onclick="insert('9')">9</button></td>
+        <td><button onclick="insert('-')">-</button></td>
+      </tr>
+      <td rowspan="2">
+        <button style="height: 102px; color: #ff2d2d;" onclick="calcular()"></button>
+      </td>
+    </table>
+  </body>
+</html>
